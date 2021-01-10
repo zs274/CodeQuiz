@@ -1,5 +1,5 @@
 // QUESTIONS
-var quiz = [{
+var questions = [{
     main: "Commonly used data types do not include:",
     options: ["strings()", "booleans()", "alerts()", "numbers()"],
     answer: "alerts()"
@@ -28,16 +28,15 @@ var quiz = [{
 
 // creating variables 
 var timer = document.getElementById("timer");
-var startButton = document.getElementById('start-btn')
-var questionElement = document.getElementById('everything')
-var answerButtonsElement = document.getElementById('answers')
-
-
+var startPage = document.getElementById('start-page');
 var timeLeft = 0;
 var score = 0;
-var question = -1;
-
-startButton.addEventListener('click', start) 
+var highScores;
+var scoreList = [];
+var answerOne = document.getElementById("btn1")
+var answerTwo = document.getElementById("btn2")
+var answerThree = document.getElementById("btn3")
+var answerFour = document.getElementById("btn4")
 
 
 // function to make the timer start after pressing the button
@@ -48,40 +47,26 @@ function start() {
     timer = setInterval(function () {
         timeLeft--;
         document.getElementById("timeLeft").innerHTML = timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timer);
+            alert("Time's Up!");
+            quizEnd();
+        }
+
+        else if (i === questions.length) {
+            clearInterval(timer);
+        }
+
     }, 1000);
 
-    startButton.classList.add('hide')
-    questionElement.classList.remove('hide')
-
-    nextQuestion();
-
-    if (timeLeft === 0) {
-        clearInterval(timer);
-        score();
-    }
+    return(score)
 }
 
+// function quizEnd() {
+// var points = document.createElement("h1");
+// var initials = document.createElement("input");
+// var submit = document.createElement("button")
 
-
-// //ends game if timer stops
-// function end() {
-//     clearInterval(timer);
-//     var quizContent = `
-//     <h1>Good Job!</h1>
-//     <h2>Your score is `+ score`</h2>
-//     <input type="text" id="initials" placeholder="Initials"> 
-//     <button onclick="setScore()">Set score!</button>`;
-//     document.getElementById("mainQuiz").innerHTML = quizContent;
-// }
-
-// // stores data on local storage
-// function storeScore() {
-// localStorage.setItem("highscore", score);
-// localStorage.setItem("highscoreName", document.getElementById('initials').value);
-// getScore();
-// }
-
-// function getScore() {
-//     var quizContent = '
-//     <h2>' + localStorage.getItem("highscoreName"'
-// }
+// score += timeLeft;
+//}
