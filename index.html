@@ -12,27 +12,53 @@
 
 </head>
 <style>
-   
-    div {padding: 30px}
-    
+    div {
+        padding: 30px
+    }
+
+    h4 {
+        color: black
+    }
 </style>
 
 <body>
-    <div class="container">
+    <!-- Header -->
+    <header class="container-fluid">
         <div class="row">
-    <div class="col text-center">
-    <h1>Code Quiz!</h1>
+            <!-- View high scores -->
+            <div class="col-6">
+                <button type="button" class="btn btn-secondary" onclick="highScores()" href="#">View High
+                    Scores</button>
+            </div>
+            <!-- Timer -->
+            <div class="col-6">
+                <p class="d-flex justify-content-end time">Time: <span id="timeLeft">60</span></p>
+            </div>
+        </div>
+    </header>
 
-    <p>Try your best to answer all the questions and test your coding knowledge!
-        <br>But be careful, for every incorrect answer you will lose 10 seconds!
-    </p>
+    <!-- Container with introduction and start button -->
+    <div id="intropage" class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Code Quiz!</h1>
+                <p>Try your best to answer all the questions and test your coding knowledge!
+                    <br>But be careful, for every incorrect answer you will lose 10 seconds!
+                </p>
+                <button type="button" class="btn btn-primary btn-lg" onclick="start()">Start Quiz</button>
+            </div>
+        </div>
+    </div>
 
-    <button type="button" class="btn btn-primary btn-lg">Start Quiz</button>
-    </div>
-    </div>
-</div>
-</div>
+    <!-- <div class="buttons">
+        <button id="btn1"><span id="option1"></span></button>
+        <button id="btn2"><span id="option2"></span></button>
+        <button id="btn3"><span id="option3"></span></button>
+        <button id="btn4"><span id="option4"></span></button>
+    </div> -->
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
