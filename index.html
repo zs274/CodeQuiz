@@ -11,6 +11,8 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 </head>
+
+<!-- basic styling -->
 <style>
     div {
         padding: 30px
@@ -25,37 +27,55 @@
     <!-- Header -->
     <header class="container-fluid">
         <div class="row">
-            <!-- View high scores -->
-            <div class="col-6">
-                <button type="button" class="btn btn-secondary" onclick="highScores()" href="#">View High
-                    Scores</button>
-            </div>
             <!-- Timer -->
-            <div class="col-6">
+            <div class="col-12">
                 <p class="d-flex justify-content-end time">Time: <span id="timeLeft">60</span></p>
             </div>
         </div>
     </header>
 
     <!-- Container with introduction and start button -->
-    <div id="intropage" class="container">
+    <div id="everything" class ="container">
+    <div id="mainQuiz" class="container">
         <div class="row">
-            <div class="col text-center">
+            <div id="startPage" class="col text-center">
                 <h1>Code Quiz!</h1>
                 <p>Try your best to answer all the questions and test your coding knowledge!
                     <br>But be careful, for every incorrect answer you will lose 10 seconds!
                 </p>
-                <button type="button" class="btn btn-primary btn-lg" onclick="start()">Start Quiz</button>
+                <button id="start-btn" type="button" class="btn btn-primary btn-lg" onclick="start()">Start Quiz</button>
             </div>
+
+            <!-- QUIZ -->
+            <div id="questionDiv" style="display: none;">
+                <p id="title" class="col text-center"></p>
+                <div id="answers" class="col text-center">
+                    <p><button id="btn1" class="btn btn-primary"></button></p>
+                    <p><button id="btn2" class="btn btn-primary"></button></p>
+                    <p><button id="btn3" class="btn btn-primary"></button></p>
+                    <p><button id="btn4" class="btn btn-primary"></button></p>
+                    <p id="checkAnswer" style="display: none;"></p>
+                </div>
+            </div>
+
+            <!-- SCORE -->
+            <div class="col text-center" id="scoreList" style="display: none;">
+                <h2 class="col text-center">Your score is <span id="finalScore"></span> !</h2>
+
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" id="inputInitials" class="form-control" placeholder="Initials">
+                        </div>
+                        <button type="submit" id="submitInitialBtn" class="btn btn-info mt-3">Submit</button>
+                    </div>
+            </div>
+            </form>
+
         </div>
     </div>
-
-    <!-- <div class="buttons">
-        <button id="btn1"><span id="option1"></span></button>
-        <button id="btn2"><span id="option2"></span></button>
-        <button id="btn3"><span id="option3"></span></button>
-        <button id="btn4"><span id="option4"></span></button>
-    </div> -->
+    </div>
+</div>
 
     <script src="script.js"></script>
 
