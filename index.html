@@ -5,59 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 </head>
 
-<!-- basic styling -->
-<style>
-    div {
-        padding: 30px
-    }
-</style>
 
 <body>
-    <!-- Header -->
-    <header class="container-fluid">
-        <div class="row">
-            <!-- Timer -->
-            <p class="d-flex justify-content-end time">Time: <span id="timeLeft">60</span></p>
-        </div>
-        </div>
-    </header>
-
-    <!-- Container with introduction and start button -->
-    <div id="master-div" class="container">
-        <div id="mainQuiz" class="container">
-            <div class="row">
-                <div id="start-page" class="col text-center">
-                    <h1>Code Quiz!</h1>
-                    <p>Try your best to answer all the questions and test your coding knowledge!
-                        <br>But be careful, for every incorrect answer you will lose 10 seconds!
-                    </p>
-                    <button id="start-btn" type="button" class="btn btn-primary btn-lg" onclick="start()">Start
-                        Quiz</button>
-                </div>
-
-                <!-- QUIZ -->
-                <div id="question-div" style="display: none;">
-                    <p id="questions" class="col text-center"></p>
-                    <div id="answers" class="col text-center">
-                        <p><button id="btn1" class="btn btn-primary"></button></p>
-                        <p><button id="btn2" class="btn btn-primary"></button></p>
-                        <p><button id="btn3" class="btn btn-primary"></button></p>
-                        <p><button id="btn4" class="btn btn-primary"></button></p>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="timer">Time: <span id="timeLeft">60</span></div>
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button type="button" class="btn">Answer 1</button>
+                <button type="button" class="btn">Answer 2</button>
+                <button type="button" class="btn">Answer 3</button>
+                <button type="button" class="btn">Answer 4</button>
             </div>
-        </div>
+            </div>
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn" onclick="start()">Start</button>
+                <button id="next-btn" class="next-btn btn hide">Next</button>
+            </div>
+       
     </div>
-
     <script src="script.js"></script>
-
 </body>
 
 </html>

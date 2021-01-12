@@ -63,6 +63,24 @@ function start() {
     return(score)
 }
 
+function setNextQuestion() {
+
+}
+
+function selectAnswer() {
+
+
+
+    
+}
+
+
+
+
+
+
+
+
 // function quizEnd() {
 // var points = document.createElement("h1");
 // var initials = document.createElement("input");
