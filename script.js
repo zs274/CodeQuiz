@@ -56,7 +56,7 @@ var questions = [
 var timerElement = document.getElementById("timer");
 var timer;
 var timeLeft = 0;
-var score = 0;
+var scoreButton = document.getElementById("scores-btn");
 var questionContainer = document.getElementById('question-container');
 var startButton = document.getElementById('start-btn');
 var nextButton = document.getElementById('next-btn');
@@ -64,10 +64,12 @@ var shuffle;
 var currentQuestion;
 var questionEl = document.getElementById('question');
 var answerButtonsEl = document.getElementById('answer-buttons');
+var introText = document.getElementById('intro')
 
 // function to make the timer start after pressing the button
 function start() {
     startButton.classList.add('hide')
+    introText.classList.add('hide')
     shuffle = questions.sort(() => Math.random() - .5);
     currentQuestion = 0;
     questionContainer.classList.remove('hide');
@@ -100,6 +102,10 @@ function setNextQuestion() {
     showQuestion(shuffle[currentQuestion]);
 
 }
+function next() {
+    currentQuestion++
+    setNextQuestion()
+}
 
 function showQuestion(question) {
     questionEl.innerText = question.question;
@@ -116,6 +122,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
+    clearStatusClass(document.body)
     nextButton.classList.add('hide');
     while (answerButtonsEl.firstChild) {
         answerButtonsEl.removeChild(answerButtonsEl.firstChild);
@@ -129,8 +136,12 @@ function selectAnswer(e) {
     Array.from(answerButtonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-    
-    nextButton.classList.remove('hide')
+    if (shuffle.length > currentQuestion +1 ) {
+        nextButton.classList.remove('hide')
+    } else {
+        scoreButton.innerText = "View Scores"
+        scoreButton.classList.remove('hide')
+    }
 }
 
 function setStatusClass(element, correct) {
