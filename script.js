@@ -52,11 +52,10 @@ var questions = [
 ];
 
 // creating variables 
-// var currentQuestion = 0;
-var timerElement = document.getElementById("timer");
+var timerElement = document.getElementById('timer');
 var timer;
 var timeLeft = 0;
-var scoreButton = document.getElementById("scores-btn");
+var scoreButton = document.getElementById('scores-btn');
 var questionContainer = document.getElementById('question-container');
 var startButton = document.getElementById('start-btn');
 var nextButton = document.getElementById('next-btn');
@@ -64,7 +63,10 @@ var shuffle;
 var currentQuestion;
 var questionEl = document.getElementById('question');
 var answerButtonsEl = document.getElementById('answer-buttons');
-var introText = document.getElementById('intro')
+var introText = document.getElementById('intro');
+var saveScore = document.getElementById('save-score')
+var enterInitials = document.getElementById('enter-initials')
+var scoreText = document.getElementById('score-text')
 
 // function to make the timer start after pressing the button
 function start() {
@@ -85,7 +87,7 @@ function start() {
         if (timeLeft <= 0) {
             clearInterval(timer);
             alert("Time's Up!");
-            quizEnd();
+            scores();
         }
         // If all questions are answered before time runs out
         else if (currentQuestion === questions.length) {
@@ -95,6 +97,11 @@ function start() {
     }, 1000);
 
     return (score);
+}
+
+// takes 10 seconds off if the answer is incorrect
+function minusTime() {
+    (timeLeft = timeLeft - 3)
 }
 
 function setNextQuestion() {
@@ -116,6 +123,9 @@ function showQuestion(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
+        else {
+            minusTime();
+        }
         button.addEventListener('click', selectAnswer);
         answerButtonsEl.appendChild(button);
     });
@@ -136,28 +146,44 @@ function selectAnswer(e) {
     Array.from(answerButtonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-    if (shuffle.length > currentQuestion +1 ) {
+    if (shuffle.length > currentQuestion + 1) {
         nextButton.classList.remove('hide')
     } else {
+        enterInitials.classList.remove('hide')
         scoreButton.innerText = "View Scores"
         scoreButton.classList.remove('hide')
+        questionContainer.classList.add('hide')
+        scoreText.classList.remove('hide')
     }
 }
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
-      element.classList.add('correct')
+        element.classList.add('correct')
     } else {
-      element.classList.add('wrong')
+        element.classList.add('wrong')
     }
-  }
+}
 
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 }
 
+// input score
+function score() {
+    timeLeft = score.innerHTML
+}
+
+// view scores
+function scores() {
+
+}
+
+function saveScore() {
+
+}
 
 //function highscore
 //after quiz ends, needs a space to input initials to store them on local storage
